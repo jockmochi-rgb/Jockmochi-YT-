@@ -3,23 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jockmochi YT - Official Website</title>
+    <title>Jockmochi YT - Sensitivity Generator</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #121212; color: #ffffff; text-align: center; margin: 0; padding: 20px; }
-        h1 { color: #ff0000; }
-        .container { max-width: 600px; margin: 0 auto; background: #1e1e1e; padding: 20px; border-radius: 10px; }
-        a { color: #00ffff; text-decoration: none; font-size: 18px; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            border: 1px solid #ff0000;
+        }
+        h1 {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #ccc;
+            font-size: 14px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            margin: 15px 0;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #cc0000;
+        }
+        .form-group {
+            margin-top: 20px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #ddd;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #252525;
+            border-radius: 8px;
+            display: none;
+            text-align: left;
+            border-left: 4px solid #00ffcc;
+        }
+        .sens-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 4px;
+        }
+        .sens-val {
+            color: #00ffcc;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Jockmochi YT</h1>
-        <p>Welcome to my official website!</p>
-        <p>Garena Free Fire Gaming & Content Creation</p>
-        <p>Gaming on Vivo T2 series 5G</p>
-        <br>
-        <a href="https://www.youtube.com/">Visit YouTube Channel</a>
-    </div>
-</body>
-</html>
+        <p>Free Fire Best Sensitivity Settings</p>
+        
+        <!-- Step 1: YouTube Channel Link -->
+        <a href="https://www.youtube.com/@jockmochiYT" target="_blank" class="btn" id="ytBtn">
+            1. Visit & Subscribe YouTube Channel
+        </a>
 
+        <!-- Step 2: Device Name Input -->
+        <div class="form-group">
+            <label for="phoneInput">Enter Your Mobile Model Name:</label>
+            <input type="text" id="phoneInput" placeholder="e.g. Vivo T2 5G, Poco X3 Pro">
+            <button class="btn" onclick="generateSensitivity()" style="background-color: #008cba;">
+                Get Sensitivity
+            </button>
+        </div>
+
+        <!-- Result Box -->
+        <div id="result">
+            <h3 style="color: #00ffcc; margin-top:0;" id="deviceTitle">Best Settings</h3>
+            <div class="sens-item"><span>General:</span> <span class="sens-val" id="genVal">98</span></div>
+            <div class="sens-item"><span>Red Dot:</span> <span class="sens-val" id="redVal">95</span></div>
+            <div class="sens-item"><span>2x Scope:</span> <span class="sens-val" id="scope2Val">90</span></div>
+            <div class="sens-item"><span>4x Scope:</span> <span class="sens-val" id="scope4Val">85</span></div>
+            <div class="sens-item"><span>Sniper Scope:</span> <span class="sens-val" id="sniperVal">60</span></div>
+            <div class="sens-item"><span>Free Look:</span> <span class="sens-val" id="freeVal">70</span></div>
+        </div>
+    </div>
+
+    <script>
+        function generateSensitivity() {
+            var phone = document.getElementById("phoneInput").value.trim();
+            if (phone === "") {
+                alert("தயவுசெய்து உங்கள் போன் பெயரை உள்ளிடவும் (Please enter your phone model)!");
+                return;
+            }
+
+            document.getElementById("deviceTitle").innerText = phone + " - Best Sensitivity";
+            
+            // Randomly generate optimized sensitivity for the given phone
+            document.getElementById("genVal").innerText = Math.floor(Math.random() * (100 - 95 + 1)) + 95;
+            document.getElementById("redVal").innerText = Math.floor(Math.random() * (98 - 90 + 1)) + 90;
+            document.getElementById("scope2Val").innerText = Math.floor(Math.random() * (95 - 85 + 1)) + 85;
+            document.getElementById("scope4Val").innerText = Math.floor(Math.random() * (92 - 80 + 1)) + 80;
+            document.getElementById("sniperVal").innerText = Math.floor(Math.random() * (70 - 50 + 1)) + 50;
+            document.getElementById("freeVal").innerText = Math.floor(Math.random() * (80 - 65 + 1)) + 65;
+
+            document.getElementById("result").style.display = "block";
+        }
+    </script>
+
+</body>
+                </html>
+                
