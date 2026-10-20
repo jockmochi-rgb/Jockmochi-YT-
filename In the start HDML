@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jockmochi YT - Official Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff0000;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jockmochi YT</h1>
+        <p>Welcome to my official website!</p>
+        <p>Garena Free Fire Gaming & Content Creation</p>
+        <br>
+        <a href="https://www.youtube.com/@JockmochiYT" target="_blank">Visit YouTube Channel</a>
+    </div>
+</body>
+</html>
