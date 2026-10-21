@@ -3,59 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>வீடியோ பின்னணி</title>
+    <title>Jockmochi YT</title>
     <style>
-        body, html {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
             height: 100%;
-            overflow: hidden;
             font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #000;
         }
 
         #bg-video {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             z-index: -1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
         }
 
         .content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            text-align: center;
+            position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            width: 90%;
+            max-width: 600px;
         }
 
         h1 {
             font-size: 3rem;
             margin-bottom: 10px;
         }
-
-        p {
-            font-size: 1.5rem;
-        }
     </style>
 </head>
 <body>
 
     <video autoplay muted loop id="bg-video">
-  <source src="video_57a3b9c55ed4.mp4" type="video/mp4">
- 
-  </video>
+        <source src="video_57a3b9c55ed4.mp4" type="video/mp4">
         உங்கள் பிரவுசர் வீடியோ டேக்கை ஆதரிக்கவில்லை.
     </video>
 
     <div class="content">
         <h1>Jockmochi YT</h1>
-        <p>வரவேற்கிறோம்!</p>
     </div>
 
 </body>
