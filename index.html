@@ -1,83 +1,144 @@
 
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jockmochi YT - Sensi Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>JOCKMOCHI YT - Sensi Generator</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; color: #fff; background: #000; overflow-x: hidden; }
-        .video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; object-fit: cover; filter: brightness(0.6); }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%); z-index: -1; }
-        header { width: 100%; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,20,0.7); backdrop-filter: blur(10px); border-bottom: 2px solid rgba(255,0,85,0.5); position: sticky; top: 0; z-index: 100; }
-        .brand-title { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; background: linear-gradient(45deg, #ff0055, #ffcc00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .yt-btn { background: #ff0000; color: #fff; padding: 12px 24px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 0 15px rgba(255,0,0,0.6); transition: 0.3s ease; border: 1px solid #fff; }
-        .yt-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,0,0,0.9); }
-        .main-container { width: 92%; max-width: 500px; margin-top: 10vh; background: rgba(15,15,30,0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255,0,85,0.3); border-radius: 20px; padding: 40px 30px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.7); }
-        h2 { font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 10px; color: #fff; }
-        p { font-size: 0.9rem; color: #ccc; margin-bottom: 30px; }
-        .input-group { margin-bottom: 25px; }
-        input { width: 100%; padding: 16px; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 1rem; outline: none; text-align: center; transition: 0.3s; }
-        input:focus { border-color: #ff0055; background: rgba(255,255,255,0.12); }
-        .gen-btn { width: 100%; padding: 16px; background: linear-gradient(45deg, #ff0055, #ff6600); color: #fff; border: none; border-radius: 12px; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; font-weight: 900; cursor: pointer; transition: 0.3s; box-shadow: 0 0 15px rgba(255,0,85,0.5); }
-        .gen-btn:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255,0,85,0.8); }
-        .result-box { margin-top: 25px; padding: 20px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,204,0,0.3); border-radius: 12px; display: none; text-align: left; }
-        .result-box h3 { font-family: 'Orbitron', sans-serif; color: #ffcc00; font-size: 1.2rem; margin-bottom: 10px; text-align: center; }
-        .result-box p { color: #fff; margin-bottom: 8px; font-size: 0.95rem; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        /* Background Video Styling - Brightness and White Contrast added */
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+            filter: brightness(1.35) contrast(1.15); /* வீடியோ பிரைட்டாகவும் தெளிவாகவும் தெரிய */
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25); /* லேசான நிழல் - வீடியோ மேலும் பிரைட்டாகத் தெரியும் */
+            z-index: -1;
+        }
+        /* Header */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff2a2a;
+            letter-spacing: 1px;
+        }
+        .subscribe-btn {
+            background-color: #ff2a2a;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        /* Generator Box */
+        .container {
+            background: rgba(20, 20, 20, 0.85);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid #ff2a2a;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        p {
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: #111;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+        input::placeholder {
+            color: #777;
+        }
+        .generate-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff2a2a, #ff7a00);
+            color: white;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
-    <video class="video-bg" autoplay loop muted playsinline aria-hidden="true">
-        <source src="./video_57a3b9c55ed4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
     <div class="overlay"></div>
     
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline>
+        <source src="video_57a3b9c5sed4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header -->
     <header>
-        <div class="brand-title">JOCKMOCHI YT</div>
-        <a href="https://youtube.com/@jockmochi" target="_blank" class="yt-btn">SUBSCRIBE</a>
+        <div class="logo">JOCKMOCHI YT</div>
+        <button class="subscribe-btn" onclick="window.open('https://youtube.com/@Jockmochi-YT', '_blank')">SUBSCRIBE</button>
     </header>
 
-    <div class="main-container">
-        <h2>Sensi Generator</h2>
+    <!-- Sensi Generator Card -->
+    <div class="container">
+        <h1>Sensi Generator</h1>
         <p>Enter your device model to find optimal sensitivity.</p>
-        <div class="input-group">
-            <input type="text" id="deviceInput" placeholder="Device model (e.g. Vivo T2)">
-        </div>
-        <button class="gen-btn" onclick="generateSensi()">GENERATE</button>
-        
-        <div class="result-box" id="resultBox">
-            <h3 id="resTitle">Sensitivity Settings</h3>
-            <p><strong>General:</strong> <span id="genVal">95</span></p>
-            <p><strong>Red Dot:</strong> <span id="redVal">92</span></p>
-            <p><strong>2X Scope:</strong> <span id="scope2Val">88</span></p>
-            <p><strong>4X Scope:</strong> <span id="scope4Val">90</span></p>
-            <p><strong>Sniper Scope:</strong> <span id="sniperVal">75</span></p>
-            <p><strong>Free Look:</strong> <span id="freeVal">85</span></p>
-        </div>
+        <input type="text" placeholder="Device model (e.g. Vivo T2)">
+        <button class="generate-btn">GENERATE</button>
     </div>
-
-    <script>
-        function generateSensi() {
-            const device = document.getElementById('deviceInput').value.trim();
-            const resultBox = document.getElementById('resultBox');
-            if(device === "") {
-                alert("தயவுசெய்து உங்கள் போன் மாடலை உள்ளிடவும்!");
-                return;
-            }
-            document.getElementById('resTitle').innerText = device + " - Best Sensi";
-            document.getElementById('genVal').innerText = Math.floor(Math.random() * 6) + 94;
-            document.getElementById('redVal').innerText = Math.floor(Math.random() * 6) + 91;
-            document.getElementById('scope2Val').innerText = Math.floor(Math.random() * 6) + 87;
-            document.getElementById('scope4Val').innerText = Math.floor(Math.random() * 6) + 89;
-            document.getElementById('sniperVal').innerText = Math.floor(Math.random() * 10) + 70;
-            document.getElementById('freeVal').innerText = Math.floor(Math.random() * 6) + 82;
-            
-            resultBox.style.display = "block";
-        }
-    </script>
 </body>
 </html>
 
