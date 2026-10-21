@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ta">
 <head>
@@ -128,5 +129,85 @@
             font-size: 1.1rem;
             font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(
+            box-shadow: 0 0 15px rgba(255,0,85,0.5);
+            transition: 0.3s;
+        }
+        .gen-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(255,0,85,0.8);
+        }
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0,0,0,0.85);
+            border: 1px solid rgba(255,204,0,0.4);
+            border-radius: 12px;
+            display: none;
+            text-align: left;
+        }
+        .result-box h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #ffcc00;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .result-box p {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="video_57a3b9c55ed4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-title">JOCKMOCHI YT</div>
+        <button class="yt-btn" onclick="window.open('https://youtube.com/@Jockmochi-YT')">Subscribe</button>
+    </header>
+
+    <!-- Sensi Generator Card -->
+    <div class="main-container">
+        <h2>Sensi Generator</h2>
+        <p>Enter your device model to find optimal sensitivity settings.</p>
+        <div class="input-group">
+            <input type="text" id="device" placeholder="Device model (e.g., Vivo T2 5G)">
+        </div>
+        <button class="gen-btn" onclick="generateSensi()">GENERATE</button>
         
+        <div class="result-box" id="resultBox">
+            <h3 id="resTitle">Sensitivity Settings</h3>
+            <p id="resGen"></p>
+            <p id="resRed"></p>
+        </div>
+    </div>
+
+    <script>
+        function generateSensi() {
+            const deviceInput = document.getElementById('device').value.trim();
+            const resultBox = document.getElementById('resultBox');
+            
+            if (deviceInput === "") {
+                alert("தயவுசெய்து உங்கள் போன் மாடலை உள்ளிடவும்!");
+                return;
+            }
+
+            document.getElementById('resTitle').innerText = deviceInput + " - Best Sensi:";
+            document.getElementById('resGen').innerText = "General: " + (Math.floor(Math.random() * 6) + 94);
+            document.getElementById('resRed').innerText = "Red Dot: " + (Math.floor(Math.random() * 6) + 91);
+            
+            resultBox.style.display = "block";
+        }
+    </script>
+</body>
+</html>
+
