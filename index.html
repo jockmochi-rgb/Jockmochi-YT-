@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
             align-items: center;
             overflow-x: hidden;
         }
-        /* Background Video Styling - Brightness and White Contrast added */
+        /* Background Video Styling */
         video {
             position: fixed;
             right: 0;
@@ -71,7 +72,7 @@
         /* Generator Box */
         .container {
             background: rgba(20, 20, 20, 0.85);
-            padding: 30px;
+            padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
             width: 90%;
@@ -81,24 +82,24 @@
             margin-top: 60px;
         }
         h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 8px;
             color: #fff;
         }
         p {
-            font-size: 14px;
+            font-size: 13px;
             color: #ccc;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         input {
             width: 100%;
             padding: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             background: #111;
             border: 1px solid #444;
             color: white;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 15px;
             outline: none;
             text-align: center;
         }
@@ -112,13 +113,13 @@
             color: white;
             border: none;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             border-radius: 6px;
             cursor: pointer;
             text-transform: uppercase;
         }
         .result-box {
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 15px;
             background: rgba(0, 0, 0, 0.9);
             border: 1px solid #ff7a00;
@@ -128,14 +129,14 @@
         }
         .result-box h3 {
             color: #ff7a00;
-            font-size: 16px;
+            font-size: 15px;
             margin-bottom: 8px;
             text-align: center;
         }
         .result-box p {
             color: #fff;
-            font-size: 14px;
-            margin-bottom: 5px;
+            font-size: 13px;
+            margin-bottom: 4px;
         }
     </style>
 </head>
@@ -165,6 +166,10 @@
             <h3 id="resTitle">Sensitivity Settings</h3>
             <p id="resGen"></p>
             <p id="resRed"></p>
+            <p id="res2x"></p>
+            <p id="res4x"></p>
+            <p id="resSniper"></p>
+            <p id="resFreelook"></p>
         </div>
     </div>
 
@@ -181,9 +186,14 @@
             document.getElementById('resTitle').innerText = device + " - Best Sensi:";
             document.getElementById('resGen').innerText = "General: " + (Math.floor(Math.random() * 6) + 94);
             document.getElementById('resRed').innerText = "Red Dot: " + (Math.floor(Math.random() * 6) + 91);
+            document.getElementById('res2x').innerText = "2x Scope: " + (Math.floor(Math.random() * 6) + 92);
+            document.getElementById('res4x').innerText = "4x Scope: " + (Math.floor(Math.random() * 6) + 90);
+            document.getElementById('resSniper').innerText = "Sniper Scope: " + (Math.floor(Math.random() * 30) + 40);
+            document.getElementById('resFreelook').innerText = "Free Look: " + (Math.floor(Math.random() * 20) + 75);
             
             resultBox.style.display = "block";
         }
     </script>
 </body>
 </html>
+    
