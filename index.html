@@ -1,36 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOCKMOCHI YT - Sensi Generator</title>
+    <title>Jockmochi YT - Sensi Generator</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Orbitron', sans-serif; }
         body {
-            background-color: #000;
-            color: #fff;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden;
         }
-        /* Background Video Styling - Brightness and White Contrast added */
-        video {
+        .video-bg {
             position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
             object-fit: cover;
-            filter: brightness(1.35) contrast(1.15); /* வீடியோ பிரைட்டாகவும் தெளிவாகவும் தெரிய */
+            filter: brightness(0.5);
         }
         .overlay {
             position: fixed;
@@ -38,106 +32,101 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.25); /* லேசான நிழல் - வீடியோ மேலும் பிரைட்டாகத் தெரியும் */
+            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
             z-index: -1;
         }
-        /* Header */
         header {
-            position: absolute;
-            top: 0;
             width: 100%;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(10,10,20,0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(255,0,85,0.5);
+            position: fixed;
+            top: 0;
+            z-index: 100;
         }
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #ff2a2a;
-            letter-spacing: 1px;
+        .brand-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff0055, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .subscribe-btn {
-            background-color: #ff2a2a;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            font-weight: bold;
-            border-radius: 4px;
+        .yt-btn {
+            background: #ff0000;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 0 15px rgba(255,0,0,0.6);
+            transition: 0.3s ease;
+            border: 1px solid #fff;
             cursor: pointer;
         }
-        /* Generator Box */
-        .container {
-            background: rgba(20, 20, 20, 0.85);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid #ff2a2a;
+        .yt-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255,0,0,0.9);
         }
-        h1 {
-            font-size: 24px;
+        .main-container {
+            width: 92%;
+            max-width: 500px;
+            margin-top: 100px;
+            background: rgba(15,15,30,0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,0,85,0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            color: #fff;
+            text-align: center;
+            color: #ffcc00;
         }
         p {
-            font-size: 14px;
-            color: #ccc;
-            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .input-group {
+            margin-bottom: 25px;
         }
         input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            background: #111;
-            border: 1px solid #444;
-            color: white;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 16px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
             outline: none;
+            text-align: center;
+            transition: 0.3s;
         }
-        input::placeholder {
-            color: #777;
+        input:focus {
+            border-color: #ff0055;
+            background: rgba(255,255,255,0.1);
         }
-        .generate-btn {
+        .gen-btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(90deg, #ff2a2a, #ff7a00);
-            color: white;
+            padding: 16px;
+            background: linear-gradient(45deg, #ff0055, #ff6600);
+            color: #fff;
             border: none;
-            font-weight: bold;
-            font-size: 16px;
-            border-radius: 6px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 900;
             cursor: pointer;
-            text-transform: uppercase;
-        }
-    </style>
-</head>
-<body>
-    <div class="overlay"></div>
-    
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline>
-        <source src="video_57a3b9c55sed4.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Header -->
-    <header>
-        <div class="logo">JOCKMOCHI YT</div>
-        <button class="subscribe-btn" onclick="window.open('https://youtube.com/@Jockmochi-YT', '_blank')">SUBSCRIBE</button>
-    </header>
-
-    <!-- Sensi Generator Card -->
-    <div class="container">
-        <h1>Sensi Generator</h1>
-        <p>Enter your device model to find optimal sensitivity.</p>
-        <input type="text" placeholder="Device model (e.g. Vivo T2)">
-        <button class="generate-btn">GENERATE</button>
-    </div>
-</body>
-</html>
-   
+            box-shadow: 0 0 15px rgba(
+        
