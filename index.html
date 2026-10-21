@@ -14,11 +14,13 @@
         body, html {
             width: 100%;
             height: 100%;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow-x: hidden;
             background-color: #000;
+            color: #fff;
         }
 
+        /* பின்னணி வீடியோ அமைப்புகள் */
         #bg-video {
             position: fixed;
             top: 50%;
@@ -30,36 +32,163 @@
             z-index: -1;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            filter: brightness(45%);
         }
 
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        /* பிரதான கண்டெய்னர் */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px 15px;
             text-align: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            width: 90%;
-            max-width: 600px;
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            color: #ff0055;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        /* ஸ்டார்ட் பட்டன் */
+        .start-btn {
+            background: linear-gradient(45deg, #ff0055, #ff5500);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.5);
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* செட்டிங்ஸ் கார்டு */
+        .settings-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+
+        .settings-header {
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 2px solid #ff0055;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        /* செட்டிங்ஸ் வரிசைகள் */
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            font-size: 0.95rem;
+            color: #eee;
+        }
+
+        .badge {
+            background-color: #00ff88;
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        select, button.action-btn {
+            background: #222;
+            color: white;
+            padding: 6px 12px;
+            border: 1px solid #555;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        button.action-btn {
+            background-color: #ff0055;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
+    <!-- பின்னணி வீடியோ -->
     <video autoplay muted loop id="bg-video">
         <source src="video_57a3b9c55ed4.mp4" type="video/mp4">
         உங்கள் பிரவுசர் வீடியோ டேக்கை ஆதரிக்கவில்லை.
     </video>
 
-    <div class="content">
+    <!-- முதன்மை உள்ளடக்கம் -->
+    <div class="container">
         <h1>Jockmochi YT</h1>
+        <p class="subtitle">வரவேற்கிறோம்!</p>
+
+        <!-- START BUTTON -->
+        <button class="start-btn">START GAME</button>
+
+        <!-- GENERAL SETTINGS -->
+        <div class="settings-card">
+            <div class="settings-header">General Settings</div>
+
+            <div class="setting-item">
+                <span class="setting-label">Phone Device</span>
+                <span class="badge">Vivo T2 5G</span>
+            </div>
+
+            <div class="setting-item">
+                <span class="setting-label">Graphics Quality</span>
+                <select>
+                    <option>Ultra</option>
+                    <option selected>High</option>
+                    <option>Smooth</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <span class="setting-label">FPS Limit</span>
+                <select>
+                    <option>60 FPS</option>
+                    <option selected>90 FPS</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <span class="setting-label">Control Layout</span>
+                <button class="action-btn">Custom HUD</button>
+            </div>
+        </div>
     </div>
 
 </body>
-</html>
+            </html>
