@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,6 @@
             align-items: center;
             overflow: hidden;
         }
-        /* Background Video Styling - Brightness and White Contrast added */
         video {
             position: fixed;
             right: 0;
@@ -30,7 +30,7 @@
             min-height: 100%;
             z-index: -1;
             object-fit: cover;
-            filter: brightness(1.35) contrast(1.15); /* வீடியோ பிரைட்டாகவும் தெளிவாகவும் தெரிய */
+            filter: brightness(1.35) contrast(1.15);
         }
         .overlay {
             position: fixed;
@@ -38,10 +38,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.25); /* லேசான நிழல் - வீடியோ மேலும் பிரைட்டாகத் தெரியும் */
+            background: rgba(0, 0, 0, 0.25);
             z-index: -1;
         }
-        /* Header */
         header {
             position: absolute;
             top: 0;
@@ -67,7 +66,6 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        /* Generator Box */
         .container {
             background: rgba(20, 20, 20, 0.85);
             padding: 30px;
@@ -114,29 +112,72 @@
             cursor: pointer;
             text-transform: uppercase;
         }
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            background: #111;
+            border-radius: 8px;
+            display: none;
+            text-align: left;
+            border: 1px solid #ff7a00;
+        }
+        .result-container h2 {
+            font-size: 18px;
+            color: #ff7a00;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
     
-    <!-- Background Video -->
     <video autoplay muted loop playsinline>
         <source src="video_57a3b9c5sed4.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Header -->
     <header>
         <div class="logo">JOCKMOCHI YT</div>
         <button class="subscribe-btn" onclick="window.open('https://youtube.com/@Jockmochi-YT', '_blank')">SUBSCRIBE</button>
     </header>
 
-    <!-- Sensi Generator Card -->
     <div class="container">
         <h1>Sensi Generator</h1>
         <p>Enter your device model to find optimal sensitivity.</p>
-        <input type="text" placeholder="Device model (e.g. Vivo T2)">
-        <button class="generate-btn">GENERATE</button>
+        <input type="text" id="deviceInput" placeholder="Device model (e.g. Vivo T2)">
+        <button class="generate-btn" onclick="generateSensitivity()">GENERATE</button>
+        
+        <div id="resultContainer" class="result-container">
+            <h2>Optimal Sensitivity</h2>
+            <div class="result-item"><span>General:</span> <span>95 - 100</span></div>
+            <div class="result-item"><span>Red Dot:</span> <span>85 - 90</span></div>
+            <div class="result-item"><span>2x Scope:</span> <span>80 - 85</span></div>
+            <div class="result-item"><span>4x Scope:</span> <span>75 - 80</span></div>
+            <div class="result-item"><span>Sniper Scope:</span> <span>50 - 60</span></div>
+        </div>
     </div>
+
+    <script>
+        function generateSensitivity() {
+            var device = document.getElementById("deviceInput").value;
+            if (device.trim() !== "") {
+                document.getElementById("resultContainer").style.display = "block";
+            } else {
+                alert("Please enter your device model first.");
+            }
+        }
+    </script>
 </body>
 </html>
+
+
